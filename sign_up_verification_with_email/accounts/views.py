@@ -7,3 +7,6 @@ def home_view(request):
         'home': 'Home View'
     }
     return render(request, 'base.html', context)
+
+def sign_up(request):
+    pass
