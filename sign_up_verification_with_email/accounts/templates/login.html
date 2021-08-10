@@ -34,14 +34,22 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 <!--Header ends-->
 
 <!--Content starts-->
+{% if messages %}
+    {% for message in messages %}
+    <div class = 'alert alert-info'>
+      {{ message }}
+    </div>
+    
+    {% endfor %}
+{% endif %}
 <div class="content flex">
-  <form>
-    <input type="text" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'"/>
-    <input type="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'"/>
+  <form method="POST">
+    <input type="email" name = 'email' placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'"/>
+    <input type="password" name = 'password' placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'"/>
     <button class="login-btn">Login</button>
   </form>
   <div class="bottom-container">
-    <p>Not registered with us?</p><a href="#">Sign Up!</a>
+    <p>Not registered with us?</p><a href="{% url 'sign-up' %}">Sign Up!</a>
     <div>
     
 <!--Content ends-->

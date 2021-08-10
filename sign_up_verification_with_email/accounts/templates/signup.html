@@ -10,7 +10,7 @@
 <div class="inner-header flex">
 <!--Just the logo.. Don't mind this-->
 
-<h3>Login</h3>
+<h3>Sign Up!</h3>
 </div>
 
 <!--Waves Container-->
@@ -35,14 +35,28 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 
 <!--Content starts-->
 <div class="content flex">
-  <form>
-    <input type="text" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'"/>
-    <input type="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'"/>
-    <button class="login-btn">Login</button>
+  <form method="POST">
+    {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class = 'alert alert-info'>
+          {{ message }}
+        </div>
+        
+        {% endfor %}
+    {% endif %}
+    <!-- <label for="email">Email</label>
+    <input type="email" name ='email' placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" value=''/>
+    <label for="password">Password</label>
+    <input type="password" name ='password' placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value='' />
+     -->
+    {{signup}}
+    <button class="login-btn">Sign Up!</button>
   </form>
   <div class="bottom-container">
-    <p>Not registered with us?</p><a href="#">Sign Up!</a>
-    <div>
+    <p>Already registered with us?</p><a href="{% url 'login' %}">Login!</a>
+  </div>
+</div>
     
 <!--Content ends-->
 
