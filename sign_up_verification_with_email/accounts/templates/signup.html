@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Sign up Page {% endblock %}
+{% block title %} <title>Sign Up</title> {% endblock %}
 {% block content %}
 <!-- Responsive Desktop/Mobile Login form considered to be used as mobile first approach--> 
 <!-- Wave animation credit: https://codepen.io/goodkatz -->
@@ -45,12 +45,12 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
         
         {% endfor %}
     {% endif %}
-    <!-- <label for="email">Email</label>
+    <label for="email">Email</label>
     <input type="email" name ='email' placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" value=''/>
     <label for="password">Password</label>
     <input type="password" name ='password' placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value='' />
-     -->
-    {{signup}}
+    
+    <!-- {{signup}} -->
     <button class="login-btn">Sign Up!</button>
   </form>
   <div class="bottom-container">

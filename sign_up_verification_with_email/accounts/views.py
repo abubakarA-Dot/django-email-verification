@@ -15,32 +15,21 @@ def home_view(request):
 def sign_up(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
-    form = CreateUserForm()
     if request.method == "POST":
-        form = CreateUserForm(request.POST)
-        if form.is_valid:
-            form.save()
-            # messages.SUCCESS(request, "Your profile is created.")
-            return redirect('login')
-            # user_info = form.save(commit=False)
-            # user_prof = Users.objects.create(email= email, verification_token=str(uuid.uuid4))
-            
-    context = {'signup':form}
-    return render(request, 'signup.html', context)
-
-'''
-try:
+        try:
             if Users.objects.filter(email = email).first():
                 messages.WARNING(request, "User with this email already exists")
                 return redirect('sign-up')
             user_profile = Users.objects.create(
-                email=email, password=password, verification_token=str(uuid.uuid4))
+                email=email, verification_token=str(uuid.uuid4))
+            user_profile.set_password(password)
             user_profile.save()
             return redirect('sent_token')
         except Exception as e:
             print('Exception error', e)
             return e
-'''
+    context = {'email': email,'password': password}
+    return render(request, 'signup.html', context)
 
 
 def login(request):
